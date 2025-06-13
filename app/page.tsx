@@ -2,7 +2,8 @@
 
 import { useState, useEffect }from 'react'
 import Button from '@/components/ui/Button'
-import { supabase } from '@/lib/supabase-client'; 
+import { supabase } from '@/lib/supabase-client';
+import Card from '@/components/Card'; 
 
 const Home = () => {
 
@@ -48,6 +49,8 @@ const Home = () => {
     }
   }
 
+
+
   useEffect(() => {
     fetchData()    
   }, [onSubmit])
@@ -62,17 +65,9 @@ const Home = () => {
       </form>
 
       <div className='grid grid-cols-3 gap-8'>
-        {taskList.map((e, i) => (
-          <div key={i} className='flex gap-2 p-4 mt-4 border border-white rounded-lg w-[300px] justify-between'>
-            <div className="flex flex-col gap-2 ">
-              <h1 className="text-lg">📌{e.title}</h1>
-              <h1 className="text-sm text-gray-300">{e.description}</h1>
-            </div>
-            <div className="flex flex-col h-full items-center justify-end gap-2">
-              <Button title="edit"/>
-              <Button title="delete"/>
-            </div>
-
+        {taskList.map((e) => (
+          <div key={e.id}>
+            <Card title={e.title} description={e.description} id={e.id}/>
           </div>
         ))}
       </div>
