@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* 
+Link of the font was inserted in app/layout.tsx
+*/
+body {
+  font-family: 'Roboto', sans-serif;
+}
