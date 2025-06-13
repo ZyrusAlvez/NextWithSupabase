@@ -18,7 +18,7 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
             
-      <body className="w-full h-screen flex items-center justify-center bg-[#0b1215]">
+      <body className="text-white flex flex-col items-center justify-center bg-[#0b1215]">
           {children}
       </body>
     </html>
