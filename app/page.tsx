@@ -16,7 +16,8 @@ const Auth = () => {
   }, [session, router]);
 
   return (
-    <main className="flex items-center justify-center">
+    <main className="flex items-center justify-center h-scren">
+      <div className='h-16 mb-4' />
       <SignIn />
     </main>
   );

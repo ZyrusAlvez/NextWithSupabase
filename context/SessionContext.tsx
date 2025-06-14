@@ -15,7 +15,6 @@ export const SessionProvider = ({ children }: { children: React.ReactNode }) => 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
-    console.log(session)
     return () => {
       listener.subscription.unsubscribe();
     };

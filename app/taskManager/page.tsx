@@ -3,7 +3,8 @@
 import { useState, useEffect }from 'react'
 import Button from '@/components/ui/Button'
 import { supabase } from '@/lib/supabase-client';
-import Card from '@/components/Card'; 
+import Card from '@/components/Card';
+import ProtectedRoute from "@/components/ProtectedRoute"; 
 
 const Home = () => {
 
@@ -49,15 +50,18 @@ const Home = () => {
     }
   }
 
-
+  async function onSignOut(){
+    await supabase.auth.signOut();
+  }
 
   useEffect(() => {
     fetchData()    
   }, [onSubmit])
   
   return (
-    <>
-      <div className='h-16' />
+    <ProtectedRoute >
+      <div className='h-16 mb-4' />
+      <Button title="Sign Out" onClick={onSignOut}/>
       <form onSubmit={onSubmit} className='flex flex-col gap-2 text-white items-center'>
         <h1 className='text-2xl font-bold m-4'>Task Manager CRUD</h1>
         <input type="text" className='border border-white rounded-sm outline-none py-1 px-2 w-[300px]' placeholder='Task Title' value={task.title} onChange={(e) => setTask((prev) => ({...prev, title: e.target.value}))}/>
@@ -73,7 +77,7 @@ const Home = () => {
         ))}
       </div>
 
-    </>
+    </ ProtectedRoute>
   )
 }
 
