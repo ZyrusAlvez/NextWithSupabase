@@ -19,6 +19,10 @@ export default function RootLayout({ children }: Props) {
       </head>
             
       <body className="text-white flex flex-col items-center justify-center bg-[#0b1215]">
+          <header className="fixed top-0 left-0 z-1 flex justify-between h-16 w-full items-center bg-gray-700 px-4 border-b border-white">
+            <h1>Task Manager 2.0</h1>
+            <h1>This is a Header</h1>
+          </header>
           {children}
       </body>
     </html>
