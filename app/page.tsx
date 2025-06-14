@@ -1,23 +1,25 @@
 "use client";
 
-import { useState } from "react"
+import { useEffect } from "react"
 import SignIn from "@/components/SignIn";
-import SignUp from "@/components/SignUp";
+import { useSession } from "@/context/SessionContext";
+import { useRouter } from "next/navigation";
 
-const auth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true)
+const Auth = () => {
+  const session = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) {
+      router.push("/taskManager"); // your task manager route
+    }
+  }, [session, router]);
 
   return (
-  <main className="flex items-center justify-center" style={{ height: "calc(100vh - 4rem)", marginTop: "4rem" }}>
-    {
-      isLoggedIn
-      ?
-      <SignUp />
-      :
+    <main className="flex items-center justify-center">
       <SignIn />
-    }
-  </main>
-  )
-}
+    </main>
+  );
+};
 
-export default auth
+export default Auth;

@@ -57,6 +57,7 @@ const Home = () => {
   
   return (
     <>
+      <div className='h-16' />
       <form onSubmit={onSubmit} className='flex flex-col gap-2 text-white items-center'>
         <h1 className='text-2xl font-bold m-4'>Task Manager CRUD</h1>
         <input type="text" className='border border-white rounded-sm outline-none py-1 px-2 w-[300px]' placeholder='Task Title' value={task.title} onChange={(e) => setTask((prev) => ({...prev, title: e.target.value}))}/>
