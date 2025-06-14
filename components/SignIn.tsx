@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Button from '@/components/ui/Button';
+import { supabase } from '@/lib/supabase-client';
 
 const SignIn = () => {
   
@@ -10,8 +11,12 @@ const SignIn = () => {
     password: ""
   })
 
-  function onSubmit(){
-    console.log("called")
+  async function onSubmit(e: React.FormEvent){
+    e.preventDefault()
+    const {error} = await supabase.auth.signInWithPassword({email: credentials.name, password: credentials.password})
+    if (error){
+      console.error("Error signing in: ", error)
+    }
   }
   
   return (

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from 'react'
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/Button'
+import {supabase} from "@/lib/supabase-client"
 
 const SignUp = () => {
   
@@ -10,8 +11,12 @@ const SignUp = () => {
     password: ""
   })
 
-  function onSubmit(){
-    console.log("called")
+  async function onSubmit(e: React.FormEvent){
+    e.preventDefault()
+    const {error} = await supabase.auth.signUp({email: credentials.name, password: credentials.password})
+    if (error){
+      console.error("Error signing up: ", error)
+    }
   }
   
   return (
