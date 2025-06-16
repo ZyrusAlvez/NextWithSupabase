@@ -2,11 +2,12 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase-client";
+import { Session } from "@supabase/supabase-js"
 
 const SessionContext = createContext<any>(null);
 
 export const SessionProvider = ({ children }: { children: React.ReactNode }) => {
-  const [session, setSession] = useState<any>(null);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession()

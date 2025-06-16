@@ -41,6 +41,7 @@ const Home = () => {
     const {data, error} = await supabase
       .from("task")
       .select("*")
+      .order("created_at", {ascending: false})
     
     if (error){
       console.error(error)
